@@ -1,8 +1,6 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-
-const api = 'https://api-instagram.elcho.dev/api/v1/auth/reset-password'
+import $api from '../../utils/http/base'
 
 const ResetPassword = () => {
 	const [newPassword, setNewPassword] = useState<string>('')
@@ -30,7 +28,7 @@ const ResetPassword = () => {
 
 		try {
 			const token = searchParams.get('token')
-			await axios.patch(api, { token, newPassword })
+			await $api.patch('/auth/reset-password', { token, newPassword })
 			setMessage('Your password has been successfully reset.')
 			setTimeout(() => {
 				navigate('/signIn')

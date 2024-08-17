@@ -1,7 +1,5 @@
-import axios from 'axios'
 import { useState } from 'react'
-
-const api = 'https://api-instagram.elcho.dev/api/v1/auth/forgot' // Замените на ваш реальный API
+import $api from '../../utils/http/base'
 
 const ForgotPassword = () => {
 	const [email, setEmail] = useState<string>('')
@@ -21,7 +19,7 @@ const ForgotPassword = () => {
 
 		try {
 			const frontEndUrl = `${window.location.origin}/reset-password`
-			const response = await axios.post(api, { email, frontEndUrl })
+			const response = await $api.post('/auth/forgot', { email, frontEndUrl })
 			setMessage('A password reset link has been sent to your email.')
 		} catch (error: any) {
 			setError('Failed to send password reset link. Please try again later.')

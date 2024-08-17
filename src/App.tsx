@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import ForgotPassword from './components/authentication/ForgotPassword'
 import Header from './components/authentication/Header/Header'
-import Refresh from './components/authentication/Refresh'
 import ResetPassword from './components/authentication/ResetPassword'
 import SignIn from './components/authentication/SignIn'
 import SignUp from './components/authentication/SignUp'

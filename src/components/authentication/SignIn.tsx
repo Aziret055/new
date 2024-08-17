@@ -1,8 +1,6 @@
-import axios from 'axios'
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-const api = 'https://api-instagram.elcho.dev/api/v1/auth/sign-in'
+import $api from '../../utils/http/base'
 
 const SignIn = () => {
 	const nav = useNavigate()
@@ -23,7 +21,7 @@ const SignIn = () => {
 				email,
 				password
 			}
-			const { data } = await axios.post(api, newData)
+			const { data } = await $api.post('/auth/sign-in', newData)
 			localStorage.setItem('accessToken', data.accessToken)
 			localStorage.setItem('refreshToken', data.refreshToken)
 			nav('/')
